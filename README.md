@@ -8,7 +8,7 @@ Welcome to our sophisticated keylogger project! This repository contains an adva
 - **📱 Responsive Design**: Enjoy a fully responsive interface that makes navigation a breeze.
 - **💬 Telegram Integration**: Automatically sends logged keystrokes to your specified chat via a Telegram bot, keeping you updated in real-time.
 - **⚡ WebSocket Communication**: Utilizing Python, it ensures real-time data transmission for swift interactions.
-- **🔒 Self-Metling**: The keylogger cleverly hides itself in a directory with a random 16-character name in the C:\ directory for stealth.
+- **🔒 Self-Metling**: The keylogger cleverly hides itself in a directory with a random 16-character name in the C:\ directory and /home/ in Linux.
 - **✨ Startup Integration**: Automatically integrates into the system startup through the registry for continuous operation.
 - **📊 Inline Panel**: An intuitive inline panel displays target options and allows for easy selection for log transmission.
 
@@ -22,19 +22,26 @@ Follow these simple steps to get started:
        ```
    
    
-3. **Navigate to the project directory**:
+2. **Navigate to the project directory**:
        ```
       cd keylogger
        ```
    
    
+3. **Configure bot_panel.py with your bot-token etc.**:
+       ```
+       bot = KeyloggerBot(name="Keylogger", api_hash='', api_id='', bot_token='token')
+       ```
+
+
 5. **Install required Python packages**:
        ```
        pip install pyrogram tgcrypto datetime websocket
-       ```
-   
+       ```   
 
-7. **Compile the C++ project** for the operating system of your choice.
+
+6. **Compile the C++ project** for the operating system of your choice.
+
 
 ## 📁 Code Structure
 
