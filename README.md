@@ -17,19 +17,19 @@ Welcome to our sophisticated keylogger project! This repository contains an adva
 Follow these simple steps to get started:
 
 1. **Clone the repository**:
-      bash```
+       ```
       git clone https://github.com/yourusername/keylogger.git
        ```
    
    
 3. **Navigate to the project directory**:
-      bash```
+       ```
       cd keylogger
        ```
    
    
 5. **Install required Python packages**:
-      bash```
+       ```
        pip install pyrogram tgcrypto datetime websocket
        ```
    
