@@ -4,7 +4,7 @@
 from socket import gethostbyname, gethostname
 from websockets.server import serve
 from datetime import datetime
-from platform import uname
+from platform import uname, node
 import subprocess
 import requests
 import asyncio
@@ -26,7 +26,7 @@ class WebSocketServer:
             file.write(
                 f"\n 🌟 -------- Session Started -------- 🌟 \n" \
                 f"🖥 HWID: {subprocess.Popen('dmidecode.exe -s system-uuid'.split()) if "nt" in os.name else subprocess.Popen('hal-get-property --udi /org/freedesktop/Hal/devices/computer --key system.hardware.uuid'.split())}\n" \
-                f"💻 Computer Name: {os.getenv("COMPUTERNAME", "Unknown Computer")}\n" \
+                f"💻 Computer Name: {node()}\n" \
                 f"🖥️ OS: {uname()[0]}" \
                 f"⌨️ OS Version: {uname()[2]}\n" \
                 f"IP 🌍 : {ip_info['query']}\n" \
