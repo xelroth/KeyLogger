@@ -1,9 +1,9 @@
-# 🌟 Keylogger Repository Overview
-
-Welcome to our sophisticated keylogger project! This repository contains an advanced keylogger crafted in **Python** and **C++**, designed to seamlessly operate across major operating systems, including **Windows** and **Linux**. 🖥️💻
+# 🌟 C++ Keylogger
+This repository contains an advanced keylogger crafted in **Python** and **C++**, designed to seamlessly operate across major operating systems, including **Windows** and **Linux**. 🖥️💻
 
 ## 🎉 Features
 
+- **🔐 Capturing Targets Device Information**: This keylogger allows you to capture all of targets system information including Hardware-ID, IP information, timezone , computername ,...
 - **🌍 Cross-Platform Compatibility**: Our keylogger functions perfectly on various operating systems, ensuring versatility.
 - **📱 Responsive Design**: Enjoy a fully responsive interface that makes navigation a breeze.
 - **💬 Telegram Integration**: Automatically sends logged keystrokes to your specified chat via a Telegram bot, keeping you updated in real-time.
