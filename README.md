@@ -18,7 +18,7 @@ Follow these simple steps to get started:
 
 1. **Clone the repository**:
        ```
-      git clone https://github.com/yourusername/keylogger.git
+      git clone https://github.com/xelroth/keylogger.git
        ```
    
    
