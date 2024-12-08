@@ -60,7 +60,3 @@ This project is licensed under the **MIT License**. For details, please refer to
 ## ⚠️ Disclaimer
 
 This software is intended for **educational purposes only**. Please use responsibly and ensure compliance with all local laws and regulations. 🚨 
-
----
-
-Thank you for exploring this project! If you have any questions or suggestions, feel free to reach out. Happy coding! 🎉
