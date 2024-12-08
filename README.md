@@ -28,7 +28,7 @@ Follow these simple steps to get started:
        ```
    
    
-3. **Configure bot_panel.py with your bot-token etc.**:
+3. **Configure bot_panel.py with your bot-token etc... and port in main keylogger file and server.py.**:
        ```
        bot = KeyloggerBot(name="Keylogger", api_hash='', api_id='', bot_token='token')
        ```
@@ -36,7 +36,7 @@ Follow these simple steps to get started:
 
 5. **Install required Python packages**:
        ```
-       pip install pyrogram tgcrypto datetime websocket
+       pyrogram, tgcrypto, datetime, websocket, subprocess, platform
        ```   
 
 
