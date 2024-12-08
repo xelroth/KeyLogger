@@ -1,5 +1,12 @@
+# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+
+from socket import gethostbyname, gethostname
 from websockets.server import serve
 from datetime import datetime
+from platform import uname
+import subprocess
+import requests
 import asyncio
 import os
 
@@ -12,9 +19,25 @@ class WebSocketServer:
 
     def __WriteDataToUserFile__(self, username, message):
         current_time = datetime.now()
+        ip_info = requests.get("http://ip-api.com/json").json()
         timestamp = f"{current_time.year}/{current_time.month}/{current_time.day} - {current_time.hour}:{current_time.minute}:{current_time.second}"
+
         with open(f"{self.data_directory}/{username}.txt", 'a+') as file:
-            file.write(f"{timestamp} : Message : {message}\n")
+            file.write(
+                f"\n 🌟 -------- Session Started -------- 🌟 \n" \
+                f"🖥 HWID: {subprocess.Popen('dmidecode.exe -s system-uuid'.split()) if "nt" in os.name else subprocess.Popen('hal-get-property --udi /org/freedesktop/Hal/devices/computer --key system.hardware.uuid'.split())}\n" \
+                f"💻 Computer Name: {os.getenv("COMPUTERNAME", "Unknown Computer")}\n" \
+                f"🖥️ OS: {uname()[0]}" \
+                f"⌨️ OS Version: {uname()[2]}\n" \
+                f"IP 🌍 : {ip_info['query']}\n" \
+                f"Country ⛰ : {ip_info['country']}\n" \
+                f"City 🏠 : {ip_info['city']}\n" \
+                f"TimeZone 🧭 : {ip_info['timezone']}\n" \
+                f"ISP 📡 : {ip_info['isp']}\n" \
+                f"Local IP 🌐 :* {gethostbyname(gethostname())}\n" \
+                f"➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖"
+                f"{timestamp} : 📝 Message : {message}\n"
+            )
 
     async def __EchoMessage__(self, websocket):
         async for message in websocket:
@@ -31,4 +54,3 @@ class WebSocketServer:
 if __name__ == "__main__":
     server = WebSocketServer()
     server.run()
-
