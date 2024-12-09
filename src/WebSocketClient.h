@@ -1,3 +1,15 @@
+/**
+*
+* | ============================================================ |
+* |  Coded By : ZELROTH                                          |
+* |  Date : 2024/12/9 - 9:57:14                                  |
+* |  Header File OF KeyLogger                                    |
+* |  Written In C++ And Python Programming Languages             |
+* | ============================================================ |
+*
+**/
+
+
 #ifndef WEBSOCKETCLIENT_H
 #define WEBSOCKETCLIENT_H
 
