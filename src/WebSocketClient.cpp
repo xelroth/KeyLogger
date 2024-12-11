@@ -10,7 +10,7 @@
 **/
 
 
-#include "WebSocketClient.h"
+#include "WebSocketClient.hpp"
 
 WebSocketClient::WebSocketClient(const std::string& url) : url(url) {
     client_instance.init_asio();
